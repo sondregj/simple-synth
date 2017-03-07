@@ -6,6 +6,7 @@ var fft, wave, env;
 
 var glide = 0;
 
+// Initial settings for ADSR envelope
 var attackLevel = 0.5;
 var releaseLevel = 0;
 
