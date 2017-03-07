@@ -1,4 +1,4 @@
-var version = "1.0";
+var version = "0.1";
 
 var osc = [];
 
@@ -82,8 +82,8 @@ function draw() {
   // Render waveform
   stroke(255, 50);
   strokeWeight(1);
-  line(0, 100, width, 100);
-  line(0, 300, width, 300);
+  //line(0, 100, width, 100);
+  //line(0, 300, width, 300);
   wave.render();
 
 
