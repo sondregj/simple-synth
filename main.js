@@ -1,24 +1,17 @@
-var version = "0.1";
+var appVersion = "0.1";
 
-var osc = [];
+var osc = []; //Array for oscillators
 
-var fft, wave, env;
-
+var fft, wave, env, monospace;
 var glide = 0;
 
 // Initial settings for ADSR envelope
 var attackLevel = 0.5;
 var releaseLevel = 0;
-
 var attackTime = 0.001;
 var decayTime = 0.3;
 var susPercent = 0.4;
 var releaseTime = 0.5;
-
-//fill(255,210,0);
-
-var monospace;
-
 
 function preload() {
   monospace = loadFont('assets/monospace.ttf');
@@ -60,10 +53,10 @@ function draw() {
 
   textSize(40);
   fill(255, 150);
-  text("v" + version, 300, 30);
+  text("v" + appVersion, 300, 30);
 
 
-  // Display settings
+  // Show settings
   noStroke();
   fill(255, 150);
   textSize(20);
@@ -72,6 +65,11 @@ function draw() {
   text("freq " + round(osc[0].osc.f) + "hz", 30, 330 + 1 * 30);
   text("tone " + glide + "ms", 30, 330 + 2 * 30);
   text("glide " + glide + "ms", 30, 330 + 3 * 30);
+
+  text("attack " + attackTime * 1000 + "ms", 30, 330 + 5 * 30);
+  text("decay " + decayTime * 1000 + "ms", 30, 330 + 6 * 30);
+  text("sustain " + susPercent * 100 + "%", 30, 330 + 7 * 30);
+  text("release " + releaseTime * 1000 + "ms", 30, 330 + 8 * 30);
 
 
   // Update oscillators
