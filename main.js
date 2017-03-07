@@ -1,3 +1,4 @@
+// Written by Sondre Gjellestad
 var appVersion = "0.1";
 
 var osc = []; //Array for oscillators
@@ -22,12 +23,10 @@ function setup() {
   frameRate(30);
   textFont(monospace);
 
-
   //Initialize ADSR
   env = new p5.Env();
   env.setADSR(attackTime, decayTime, susPercent, releaseTime);
   env.setRange(attackLevel, releaseLevel);
-
 
   //Initialize FFT
   wave = new Waveform();
@@ -39,9 +38,9 @@ function setup() {
   }
 }
 
+
 function draw() {
   background(30, 200);
-
 
   // Header
   textAlign(LEFT, TOP);
@@ -54,7 +53,6 @@ function draw() {
   textSize(40);
   fill(255, 150);
   text("v" + appVersion, 300, 30);
-
 
   // Show settings
   noStroke();
@@ -71,17 +69,15 @@ function draw() {
   text("sustain " + susPercent * 100 + "%", 30, 330 + 7 * 30);
   text("release " + releaseTime * 1000 + "ms", 30, 330 + 8 * 30);
 
-
   // Update oscillators
   for (var i = 0; i < osc.length; i++) {
     osc[i].update();
   }
 
-
   // Render waveform
   stroke(255, 50);
   strokeWeight(1);
-  //line(0, 100, width, 100);
+  //line(0, 100, width, 100); // Boundary lines
   //line(0, 300, width, 300);
   wave.render();
 
@@ -108,18 +104,27 @@ function keyReleased() {
 }
 
 function keyHandler(keyCode, pressed) {
+  var key = keyCode;
   if (pressed) {
-    var keyNumber = keys[octave][keyCode];
-    if (keyNumber) {
+    if (keys[key][octave]) {
+      var keyNumber = keys[key][octave];
       var f = calcFrequency(keyNumber);
       for (var i = 0; i < osc.length; i++) {
         osc[i].osc.freq(f, glide);
       }
       env.triggerAttack();
+    } else if (key == 90 || key == 88) {
+      console.log("Octave");
+      if (key == 90) {
+        octave--;
+
+      } else {
+        octave++;
+      }
     }
   } else {
-    var keyNumber = keys[octave][keyCode];
-    if (keyNumber) {
+    if (keys[key][octave]) {
+      var keyNumber = keys[key][octave];
       env.triggerRelease();
     }
   }
@@ -133,3 +138,5 @@ function calcFrequency(n) {
   var f = pow(2, (n - 49) / 12) * 440;
   return f;
 }
+
+90, 88
