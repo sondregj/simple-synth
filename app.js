@@ -61,6 +61,10 @@ function draw() {
     osc[i].render();
   }
 
+  // Reverb
+  rev.update();
+  rev.render();
+
   // Update and render envelope and ADSR visualization
   adsr.update();
   adsr.render();
@@ -69,7 +73,6 @@ function draw() {
 function keyPressed() {
   var key = keyCode;
   if (key == 90 || key == 88) {
-    console.log("Octave");
     if (key == 90) {
       if (octave > 0) {
         octave--;
@@ -91,9 +94,11 @@ function keyPressed() {
 
 function keyReleased() {
   var key = keyCode;
-  if (keys[key][octave]) {
-    var keyNumber = keys[key][octave];
-    env.triggerRelease();
+  if (keys[key]) {
+    if (keys[key][octave]) {
+      var keyNumber = keys[key][octave];
+      env.triggerRelease();
+    }
   }
 }
 
