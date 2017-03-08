@@ -21,11 +21,11 @@ function Osc() {
     noStroke();
     textAlign(LEFT, TOP);
     textSize(30);
-    fill(255);
-    text("OSC" + (this.id + 1), (this.id) * width / 3 + 30, height - rowHeight + 20);
+    fill(255, 200);
+    text("OSC" + (this.id + 1), (this.id) * width / 3 + 30, height - rowHeight * 2 + 20);
 
     textSize(15);
     fill(255, 150);
-    text("wavetype " + this.wavetype, (this.id) * width / 3 + 30, height - rowHeight + 60);
+    text("wavetype " + this.wavetype, (this.id) * width / 3 + 30, height - rowHeight * 2 + 60);
   }
 }

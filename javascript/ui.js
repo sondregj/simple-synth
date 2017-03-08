@@ -13,6 +13,8 @@ function UI() {
     fill(255, 150);
     text("v" + appVersion, 300, 30);
 
+    // Display amplitude
+
     // Show settings
     noStroke();
     fill(255, 150);
@@ -28,24 +30,20 @@ function UI() {
     text("sustain " + adsr.susPercent * 100 + "%", 30, 330 + 7 * 30);
     text("release " + adsr.releaseTime * 1000 + "ms", 30, 330 + 8 * 30);
 
-
-
-    // Oscillator section
+    // Oscillator, ADSR and filter section
     fill(40);
     noStroke();
-    rect(0, height - rowHeight, width, rowHeight);
+    rect(0, height - rowHeight * 2, width, rowHeight * 2);
+
+    // Line separating rows
     stroke(70, 100);
-    strokeWeight(1);
-    line(width / 3, height - rowHeight, width / 3, height);
-    line(2 * width / 3, height - rowHeight, width * 2 / 3, height);
+    strokeWeight(5);
+    line(0, height - rowHeight, width, height - rowHeight); // Line separating the rows
 
-
-    // ADSR and filter section
-    fill(10);
-    noStroke();
-    rect(width * 2 / 3, height - rowHeight * 2, width / 3, rowHeight);
-
-
-
+    // Line separating columns
+    stroke(70, 100);
+    strokeWeight(5);
+    line(width / 3, height - rowHeight * 2, width / 3, height);
+    line(2 * width / 3, height - rowHeight * 2, width * 2 / 3, height);
   }
 }

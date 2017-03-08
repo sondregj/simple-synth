@@ -4,7 +4,7 @@ var appVersion = "0.1";
 var canvas;
 var osc = []; // Array for oscillators
 
-var fft, wave, env, appfont, adsr, ui;
+var fft, wave, env, appfont, adsr, ui, rev, sFilter, amplitude;
 
 var rowHeight = 200;
 
@@ -21,22 +21,32 @@ function setup() {
   // Initialize UI
   ui = new UI();
 
-  //Initialize ADSR
+  // Initialize ADSR
   adsr = new ADSR();
   adsr.init();
 
-  //Initialize FFT
+  // Initialize FFT
   wave = new Waveform();
 
-  // Initialize oscillators
+  // Initialize reverb
+  rev = new Reverb();
+
+  // Initialize filter
+  sFilter = new Filter();
+
+  // Initialize 3 oscillators
   for (var i = 0; i < 3; i++) {
     osc[i] = new Osc();
     osc[i].init(i);
   }
+
+  // Initialize amplitude
+  amplitude = new p5.Amplitude(0.5);
 }
 
 function draw() {
   background(30, 200);
+  //amplitude.getLevel();
 
   // Render UI
   ui.render();

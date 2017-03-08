@@ -21,13 +21,30 @@ function ADSR() {
   }
 
   this.render = function() { // Render visualization of envelope
-
-
     push();
-    translate(width * 2 / 3, height - rowHeight * 2);
+    translate(width * 2 / 3, height - rowHeight);
+
+    noStroke();
+    textAlign(LEFT, TOP);
+    textSize(30);
+    fill(255, 200);
+    text("ADSR", 30, 20);
+
+    textSize(15);
+    fill(255, 150);
+    //text("wavetype " + this.wavetype, (this.id) * width / 3 + 30, height - rowHeight * 2 + 60);
+
+    //Render visualization
+    noFill();
+    stroke(255);
+    rect
+
+
     stroke(255);
     strokeWeight(10);
     point(30, 150);
+
+
     pop();
   }
 }
