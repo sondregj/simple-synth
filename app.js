@@ -1,12 +1,10 @@
 // Written by Sondre Gjellestad
 var appVersion = "0.1";
 
-var osc = []; //Array for oscillators
+var canvas;
+var osc = []; // Array for oscillators
 
 var fft, wave, env, monospace, adsr;
-var glide = 0;
-
-// Initial settings for ADSR envelope
 
 
 function preload() {
@@ -14,7 +12,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight, P2D);
+  canvas = createCanvas(windowWidth, windowHeight, P2D);
   frameRate(30);
   textFont(monospace);
 
@@ -92,7 +90,7 @@ function draw() {
   }
 
   // Render ADSR visualization
-  adsr.render();
+  //adsr.render();
 }
 
 

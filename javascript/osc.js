@@ -1,3 +1,5 @@
+var glide = 0;
+
 function Osc() {
   this.wavetype;
   this.id;
