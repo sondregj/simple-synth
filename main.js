@@ -3,16 +3,11 @@ var appVersion = "0.1";
 
 var osc = []; //Array for oscillators
 
-var fft, wave, env, monospace;
+var fft, wave, env, monospace, adsr;
 var glide = 0;
 
 // Initial settings for ADSR envelope
-var attackLevel = 0.5;
-var releaseLevel = 0;
-var attackTime = 0.001;
-var decayTime = 0.3;
-var susPercent = 0.4;
-var releaseTime = 0.5;
+
 
 function preload() {
   monospace = loadFont('assets/monospace.ttf');
@@ -24,9 +19,8 @@ function setup() {
   textFont(monospace);
 
   //Initialize ADSR
-  env = new p5.Env();
-  env.setADSR(attackTime, decayTime, susPercent, releaseTime);
-  env.setRange(attackLevel, releaseLevel);
+  adsr = new ADSR();
+  adsr.init();
 
   //Initialize FFT
   wave = new Waveform();
@@ -64,15 +58,18 @@ function draw() {
   text("tone " + glide + "ms", 30, 330 + 2 * 30);
   text("glide " + glide + "ms", 30, 330 + 3 * 30);
   text("octave " + octave, 30, 330 + 4 * 30);
-  text("attack " + attackTime * 1000 + "ms", 30, 330 + 5 * 30);
-  text("decay " + decayTime * 1000 + "ms", 30, 330 + 6 * 30);
-  text("sustain " + susPercent * 100 + "%", 30, 330 + 7 * 30);
-  text("release " + releaseTime * 1000 + "ms", 30, 330 + 8 * 30);
+  text("attack " + adsr.attackTime * 1000 + "ms", 30, 330 + 5 * 30);
+  text("decay " + adsr.decayTime * 1000 + "ms", 30, 330 + 6 * 30);
+  text("sustain " + adsr.susPercent * 100 + "%", 30, 330 + 7 * 30);
+  text("release " + adsr.releaseTime * 1000 + "ms", 30, 330 + 8 * 30);
 
   // Update oscillators
   for (var i = 0; i < osc.length; i++) {
     osc[i].update();
   }
+
+  // Update envelope
+  adsr.update();
 
   // Render waveform
   stroke(255, 50);
@@ -93,7 +90,12 @@ function draw() {
   for (var i = 0; i < osc.length; i++) {
     osc[i].render();
   }
+
+  // Render ADSR visualization
+  adsr.render();
 }
+
+
 
 function keyPressed() {
   keyHandler(keyCode, 1);

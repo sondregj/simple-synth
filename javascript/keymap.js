@@ -1,12 +1,12 @@
 // This script links keynumbers to keys on the keyboard.
 // https://en.wikipedia.org/wiki/Piano_key_frequencies
 
+// Global keyboard variables
 var octave = 4;
 var keys = [];
 
 function setupKeymap() {
-
-  //Map keyCodes to variables
+  // Map keyCodes to variables
   var c = 65; // A on laptop-keyboard
   var cs = 87; // W on laptop-keyboard
   var d = 83; // S on laptop-keyboard
@@ -21,13 +21,8 @@ function setupKeymap() {
   var b = 74; // J on laptop-keyboard
 
 
-  /*
-
-  The following part creates arrays for every key, combining keyCode
-  and current octave.
-
-  */
-
+  //The following part creates arrays for every key, combining keyCode
+  //and current octave.
 
   //C note
   keys[c] = [
