@@ -21,15 +21,13 @@ function ADSR() {
   }
 
   this.render = function() { // Render visualization of envelope
-    fill(10);
-    noStroke();
-    rect(width * 2 / 3, height - 400, width / 3, 250);
+
 
     push();
-    translate(width * 2 / 3, height - 400);
+    translate(width * 2 / 3, height - rowHeight * 2);
     stroke(255);
     strokeWeight(10);
-    point(30, 200);
+    point(30, 150);
     pop();
   }
 }
