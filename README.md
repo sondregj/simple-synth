@@ -5,4 +5,4 @@ A simple, minimal synth built with the p5.js libraries.
 - [x] Keyhandler accepting notes from C0 to B8
 - [x] Three oscillators
 - [x] ADSR envelope
-- [] Filter (Coming)
+- [ ] Filter (Coming)
