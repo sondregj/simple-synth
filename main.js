@@ -63,7 +63,7 @@ function draw() {
   text("freq " + round(osc[0].osc.f) + "hz", 30, 330 + 1 * 30);
   text("tone " + glide + "ms", 30, 330 + 2 * 30);
   text("glide " + glide + "ms", 30, 330 + 3 * 30);
-
+  text("octave " + octave, 30, 330 + 4 * 30);
   text("attack " + attackTime * 1000 + "ms", 30, 330 + 5 * 30);
   text("decay " + decayTime * 1000 + "ms", 30, 330 + 6 * 30);
   text("sustain " + susPercent * 100 + "%", 30, 330 + 7 * 30);
@@ -106,21 +106,24 @@ function keyReleased() {
 function keyHandler(keyCode, pressed) {
   var key = keyCode;
   if (pressed) {
-    if (keys[key][octave]) {
+    if (key == 90 || key == 88) {
+      console.log("Octave");
+      if (key == 90) {
+        if (octave > 0) {
+          octave--;
+        }
+      } else {
+        if (octave < 8) {
+          octave++;
+        }
+      }
+    } else if (keys[key][octave]) {
       var keyNumber = keys[key][octave];
       var f = calcFrequency(keyNumber);
       for (var i = 0; i < osc.length; i++) {
         osc[i].osc.freq(f, glide);
       }
       env.triggerAttack();
-    } else if (key == 90 || key == 88) {
-      console.log("Octave");
-      if (key == 90) {
-        octave--;
-
-      } else {
-        octave++;
-      }
     }
   } else {
     if (keys[key][octave]) {
