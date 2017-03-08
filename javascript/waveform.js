@@ -1,15 +1,28 @@
 function Waveform() {
   this.fft = new p5.FFT();
+  this.waveform;
+
+  this.update = function() {
+
+  }
 
   this.render = function() {
-    var waveform = this.fft.waveform();
+
+    /*
+    stroke(255, 50);
+    strokeWeight(1);
+    line(0, 100, width, 100); // Boundary lines
+    line(0, 300, width, 300);
+    */
+
+    this.waveform = this.fft.waveform();
     noFill();
-    beginShape();
-    stroke(255, 210, 0);
     strokeWeight(2);
-    for (var i = 0; i < waveform.length; i++) {
-      var x = map(i, 0, waveform.length, 0, width);
-      var y = map(waveform[i], -1, 1, 100, 300);
+    stroke(255, 210, 0);
+    beginShape();
+    for (var i = 0; i < this.waveform.length; i++) {
+      var x = map(i, 0, this.waveform.length, 0, width);
+      var y = map(this.waveform[i], -1, 1, 100, 300);
       vertex(x, y);
     }
     endShape();

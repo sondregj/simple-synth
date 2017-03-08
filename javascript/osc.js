@@ -1,3 +1,5 @@
+var glide = 0;
+
 function Osc() {
   this.wavetype;
   this.id;
@@ -16,13 +18,14 @@ function Osc() {
   }
 
   this.render = function() {
+    noStroke();
     textAlign(LEFT, TOP);
     textSize(30);
-    fill(255);
-    text("OSC" + (this.id + 1), (this.id) * width / 3 + 30, height - 130);
+    fill(255, 200);
+    text("OSC" + (this.id + 1), (this.id) * width / 3 + 30, height - rowHeight * 2 + 20);
 
     textSize(15);
     fill(255, 150);
-    text("wavetype " + this.wavetype, (this.id) * width / 3 + 30, height - 90);
+    text("wavetype " + this.wavetype, (this.id) * width / 3 + 30, height - rowHeight * 2 + 60);
   }
 }
