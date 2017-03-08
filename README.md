@@ -12,4 +12,7 @@ A simple, minimal synth built with the p5.js libraries.
 
 
 ## Design
+
+Early version with basic layout. 
+
 ![Screenshot](http://i.imgur.com/pHUuX40.png)
