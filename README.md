@@ -2,7 +2,7 @@
 
 A simple, minimal synth built with the p5.js libraries. 
 
-[p5js](http://p5js.org).
+[sondregj.github.io/simple-synth](https://sondregj.github.io/simple-synth/).
 
 ## Key features
 
