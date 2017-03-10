@@ -1,7 +1,8 @@
 # Simple synth
 
-A simple, minimal synth built with the p5.js libraries.
+A simple, minimal synth built with the p5.js libraries. 
 
+[p5js](http://p5js.org).
 
 ## Key features
 
@@ -10,6 +11,10 @@ A simple, minimal synth built with the p5.js libraries.
 - [x] ADSR envelope
 - [ ] Filter (Coming)
 
+## Usage
+
+* The synth is controlled using the keys on the keyboard
+* To switch between octaves, use the Z and X key
 
 ## Design
 
