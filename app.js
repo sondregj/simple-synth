@@ -7,6 +7,7 @@ var osc = []; // Array for oscillators
 var fft, wave, env, appfont, adsr, ui, rev, sFilter, amplitude;
 
 var rowHeight = 200;
+var keysdown = 0;
 
 
 function preload() {
@@ -71,6 +72,7 @@ function draw() {
 }
 
 function keyPressed() {
+  keysdown++;
   var key = keyCode;
   if (key == 90 || key == 88) {
     if (key == 90) {
@@ -93,6 +95,7 @@ function keyPressed() {
 }
 
 function keyReleased() {
+  keysdown--;
   var key = keyCode;
   if (keys[key]) {
     if (keys[key][octave]) {
